@@ -10,16 +10,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 return MaterialApp(
-  		title: 'Welcome to Flutter',
+  		// title: 'Welcome to Flutter',
   		home: Scaffold(
     			appBar: AppBar(
-      				title: const Text('Welcome to Flutter'),
+      				title: const Text('Book List Viewer'),
     			),
-    			body: const Center(
-      				child: Text('Hello World'),
+    			body: ListView(
+      				children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                )
+              ],
     			),
   		),
-);
+); 
   }
 }
 
