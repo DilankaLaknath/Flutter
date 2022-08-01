@@ -25,7 +25,13 @@ return MaterialApp(
                       suffixIcon: Icon(Icons.search),
                     ),
                   ),
-                )
+                ),
+                for (int i = 0; i <10; i++)
+                  ListTile(
+                    title: Text("Harry Potter"),
+                    subtitle: Text("J.K.Rolling"),
+                    // leading: Image.network(''),
+                  )
               ],
     			),
   		),
