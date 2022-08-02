@@ -4,9 +4,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 return MaterialApp(
@@ -31,13 +36,20 @@ return MaterialApp(
                     title: Text("Harry Potter"),
                     subtitle: Text("J.K.Rolling"),
                     leading: Image.network("https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg", width: 100, height: 100,),
-
                   )
               ],
     			),
   		),
 ); 
   }
+}
+
+class Book {
+  String title;
+  List<String> authors;
+  String coverImage;
+
+  Book(this.title, this.authors, this.coverImage);
 }
 
 // import 'package:flutter/material.dart';
