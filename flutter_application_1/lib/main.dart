@@ -17,8 +17,8 @@ return MaterialApp(
     			),
     			body: ListView(
       				children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
+                const Padding(
+                  padding: EdgeInsets.all(16.0),
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -30,7 +30,8 @@ return MaterialApp(
                   ListTile(
                     title: Text("Harry Potter"),
                     subtitle: Text("J.K.Rolling"),
-                    // leading: Image.network(''),
+                    leading: Image.network("https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg", width: 100, height: 100,),
+
                   )
               ],
     			),
