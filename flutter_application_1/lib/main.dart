@@ -38,11 +38,11 @@ return MaterialApp(
                 if (isLoading)
                   Center(child: CircularProgressIndicator())
                 else
-                  for (int i = 0; i <10; i++)
+                  for (int i = 0; i <books.length; i++)
                     ListTile(
-                      title: Text("Harry Potter"),
-                      subtitle: Text("J.K.Rolling"),
-                      leading: Image.network("https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg", width: 100, height: 100,),
+                      title: Text(books[i].title),
+                      subtitle: Text(books[i].authors.join(", ")),
+                      leading: Image.network(books[i].coverImage, width: 100, height: 100,),
                      )
               ],
     			),
@@ -57,8 +57,13 @@ return MaterialApp(
     
     await Future.delayed(Duration(seconds: 1));
 
+    final loadedBooks = [
+      Book("Harry Pottor", ["J.K.Rowling"], "https://i.ytimg.com/vi/pIrOAyXIjak/maxresdefault.jpg"),
+      Book("Load of the Rings", ["Peter Jackson"], "https://www.animationxpress.com/wp-content/uploads/2021/08/intro-1508529851.jpg"),
+      Book("The Book", ["Dilanka L"], "https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"),
+    ];
     setState(() {
-      books = [];  
+      books = loadedBooks;  
     });
     
     setState(() {
