@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -56,12 +57,28 @@ return MaterialApp(
     });
     
     // await Future.delayed(Duration(seconds: 1));
-    
-    final loadedBooks = [
-      Book("Harry Pottor", ["J.K.Rowling"], "https://i.ytimg.com/vi/pIrOAyXIjak/maxresdefault.jpg"),
-      Book("Load of the Rings", ["Peter Jackson"], "https://www.animationxpress.com/wp-content/uploads/2021/08/intro-1508529851.jpg"),
-      Book("The Book", ["Dilanka L"], "https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"),
-    ];
+
+    Dio dio = Dio();
+
+    final response = await dio.get("http://openlibrary.org/search.json?q=$text&limit=10");
+      final docs = response.data["docs"];
+
+    // final loadedBooks = [
+    //   Book("Harry Pottor", ["J.K.Rowling"], "https://i.ytimg.com/vi/pIrOAyXIjak/maxresdefault.jpg"),
+    //   Book("Load of the Rings", ["Peter Jackson"], "https://www.animationxpress.com/wp-content/uploads/2021/08/intro-1508529851.jpg"),
+    //   Book("The Book", ["Dilanka L"], "https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03.png"),
+    // ];
+
+    List<Book> loadedBooks = [];
+    for (var doc in docs) {
+      final bookTitle = doc["title"];
+      final bookAuthors = List<String>.from(doc["author_name"]);
+      final coverI = doc["cover_i"];
+      final coverImage = "https://covers.openlibrary.org/b/id/$coverI-M.jpg" ;
+
+      loadedBooks.add(Book(bookTitle, bookAuthors, coverImage));
+    }
+
     setState(() {
       books = loadedBooks;  
     });
