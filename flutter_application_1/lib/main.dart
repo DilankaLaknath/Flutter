@@ -12,6 +12,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool isLoading = false;
+  List<Book> books = [];
+
   @override
   Widget build(BuildContext context) {
 return MaterialApp(
@@ -22,25 +25,47 @@ return MaterialApp(
     			),
     			body: ListView(
       				children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(16.0),
                   child: TextField(
+                    onSubmitted: handleSearchSubmitted,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.search),
                     ),
                   ),
                 ),
-                for (int i = 0; i <10; i++)
-                  ListTile(
-                    title: Text("Harry Potter"),
-                    subtitle: Text("J.K.Rolling"),
-                    leading: Image.network("https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg", width: 100, height: 100,),
-                  )
+                if (isLoading)
+                  Center(child: CircularProgressIndicator())
+                else
+                  for (int i = 0; i <10; i++)
+                    ListTile(
+                      title: Text("Harry Potter"),
+                      subtitle: Text("J.K.Rolling"),
+                      leading: Image.network("https://thumbs.dreamstime.com/b/pink-cosmos-flowe-flowerbackground-112007426.jpg", width: 100, height: 100,),
+                     )
               ],
     			),
   		),
 ); 
+  }
+
+  void handleSearchSubmitted(String text) async {
+    setState(() {
+      isLoading = true;
+    });
+    
+    await Future.delayed(Duration(seconds: 1));
+
+    setState(() {
+      books = [];  
+    });
+    
+    setState(() {
+      isLoading = false;
+    });
+    
+    // print(text);
   }
 }
 
