@@ -55,8 +55,8 @@ return MaterialApp(
       isLoading = true;
     });
     
-    await Future.delayed(Duration(seconds: 1));
-
+    // await Future.delayed(Duration(seconds: 1));
+    
     final loadedBooks = [
       Book("Harry Pottor", ["J.K.Rowling"], "https://i.ytimg.com/vi/pIrOAyXIjak/maxresdefault.jpg"),
       Book("Load of the Rings", ["Peter Jackson"], "https://www.animationxpress.com/wp-content/uploads/2021/08/intro-1508529851.jpg"),
