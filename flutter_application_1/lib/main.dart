@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'book_tile.dart';
+import 'package:flutter_application_1/book_tile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,8 +40,7 @@ return MaterialApp(
                 if (isLoading)
                   Center(child: CircularProgressIndicator())
                 else
-                  for (int i = 0; i <books.length; i++)
-                    BookTile(book: books[i])
+                  for (int i = 0; i <books.length; i++) BookTile(book: books[i]),
                     // ListTile(
                     //   title: Text(books[i].title),
                     //   subtitle: Text(books[i].authors.join(", ")),
@@ -112,7 +111,6 @@ class Book {
   String title;
   List<String> authors;
   String coverImage;
-
   Book(this.title, this.authors, this.coverImage);
 }
 
