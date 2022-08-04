@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:flutter_application_1/book_page.dart';
+import 'package:flutter_application_1/main.dart';
 
 class BookTile extends StatelessWidget {
   final Book book;
@@ -11,7 +12,12 @@ class BookTile extends StatelessWidget {
                       title: Text(book.title),
                       subtitle: Text(book.authors.join(", ")),
                       leading: Image.network(book.coverImage, width: 100, height: 100,),
+                      onTap: () => handleOnTap(context),
                      );
-    
-  }
+  } 
+}
+
+void handleOnTap(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (_) => BookPage()));
+  // Go to page
 }
