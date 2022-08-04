@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'book_tile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,11 +41,12 @@ return MaterialApp(
                   Center(child: CircularProgressIndicator())
                 else
                   for (int i = 0; i <books.length; i++)
-                    ListTile(
-                      title: Text(books[i].title),
-                      subtitle: Text(books[i].authors.join(", ")),
-                      leading: Image.network(books[i].coverImage, width: 100, height: 100,),
-                     )
+                    BookTile(book: books[i])
+                    // ListTile(
+                    //   title: Text(books[i].title),
+                    //   subtitle: Text(books[i].authors.join(", ")),
+                    //   leading: Image.network(books[i].coverImage, width: 100, height: 100,),
+                    //  )
               ],
     			),
   		),
@@ -90,6 +92,21 @@ return MaterialApp(
     // print(text);
   }
 }
+
+// class BookTile extends StatelessWidget {
+//   final Book book;
+//   const BookTile({Key? key, required this.book}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListTile(
+//                       title: Text(book.title),
+//                       subtitle: Text(book.authors.join(", ")),
+//                       leading: Image.network(book.coverImage, width: 100, height: 100,),
+//                      );
+    
+//   }
+// }
 
 class Book {
   String title;
